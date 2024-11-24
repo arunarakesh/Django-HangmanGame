@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>Welcome to Hangman Game</title>
+         <!--Css file included-->
+         {% load static %}
+         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    </head>
+    <body onload="functionstg()">
+        <div id="GFG">
+        <h1>Hangman - Word Search Game</h1>
+        <h2>Click on the video button to start</h2>
+        <!--Created links using image map to go to themes page and settings page-->
+            {% load static %}
+            <img class="home" src="{% static 'images/hangmanmain.png' %}" alt="hangmancartoon" usemap="#hngmap">
+            <map name="hngmap">
+                <area shape="rect" coords="484,234,409,165" alt="Select a theme" href="{% url 'hang_theme' %}">
+                <area shape="rect" coords="405,411,493,478" alt="setting" href="{% url 'setting' %}">
+            </map>
+        </div>
+        <div class="hanghome">
+
+        <h3>Playing Hangman - Rules</h3>
+
+        <p class="para"> Hangman is an old school favorite, a word game where the goal is simply to find the missing word or words.</p>
+
+        <p class="para"> You will be presented with a number of blank spaces representing the missing letters you need to find.</p>
+
+        <p class="para"> Use the keyboard to guess a letter (I recommend starting with vowels).</p>
+
+        <p class="para"> If your chosen letter exists in the answer, then all places in the answer where that letter appear will be revealed.</p>
+
+        <p class="para"> After you have revealed several letters, you may be able to guess what the answer is and fill in the remaining letters.</p>
+
+        <p class="para"> Be warned, every time you guess a letter wrong you loose a life and the hangman begins to appear, piece by piece.</p>
+
+        <p class="para"> Solve the puzzle before the hangman dies.</p>
+
+        <p class="para"> If you are a fan of word puzzles, make sure you check out our word search games also.</p>
+
+        </div>
+
+        {% block js_block %}
+            <script type="text/javascript" src= "{% static 'js/hangman.js' %}"> </script>
+        {% endblock %}
+
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <title>Hangman Themes</title>
+
+    </head>
+
+    <body onload="functionstg()">
+    <p> Back to <a href="{% url 'hang_man' %}">Hangman</a></p>
+        <h1> Pick a Theme</h1>
+                <div class="grid-container">
+                    <form action="/playgame/" method="post" id="themeform">{% csrf_token %} 
+                 <ul>
+                    {% for x in mytheme %}
+                    <li>        
+                            <button type="submit" 
+                                    name="themename"
+                                    value="{{x.theme_name}}"
+                                    id="{{x.id}}"
+                                    form="themeform" 
+                                    onclick="allsound()"
+                                    class="buttontheme">{{x.theme_name}}
+                            </button>   
+                    </li>
+                    {% endfor %}
+                 </ul>
+                </form>
+                
+            {% block js_block %}
+            <script type="text/javascript" src= "{% static 'js/hangman.js' %}"> </script>
+            {% endblock %}
+            
+        </div>
+    </body>
+
+</html>
